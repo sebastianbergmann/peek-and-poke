@@ -18,7 +18,7 @@ class Proxy
     private $object;
 
     /**
-     * @param  object $object
+     * @param  object                   $object
      * @throws InvalidArgumentException
      */
     public function __construct($object)
@@ -29,8 +29,8 @@ class Proxy
     }
 
     /**
-     * @param  string $name
-     * @param  array  $arguments
+     * @param  string                 $name
+     * @param  array                  $arguments
      * @return mixed
      * @throws BadMethodCallException
      */
@@ -54,7 +54,7 @@ class Proxy
     }
 
     /**
-     * @param  string $name
+     * @param  string                      $name
      * @return mixed
      * @throws BadAttributeAccessException
      */
@@ -64,8 +64,8 @@ class Proxy
     }
 
     /**
-     * @param  string $name
-     * @param  mixed  $value
+     * @param  string                      $name
+     * @param  mixed                       $value
      * @throws BadAttributeAccessException
      */
     public function __set($name, $value)
@@ -74,7 +74,7 @@ class Proxy
     }
 
     /**
-     * @param  object $object
+     * @param  object                   $object
      * @throws InvalidArgumentException
      */
     private function ensureArgumentIsObject($object)
@@ -85,7 +85,7 @@ class Proxy
     }
 
     /**
-     * @param  string $name
+     * @param  string              $name
      * @return \ReflectionProperty
      */
     private function attribute($name)
