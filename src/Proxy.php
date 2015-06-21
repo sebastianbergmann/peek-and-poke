@@ -32,6 +32,7 @@ class Proxy
      * @param  string $name
      * @param  array  $arguments
      * @return mixed
+     * @throws BadMethodCallException
      */
     public function __call($name, array $arguments)
     {
@@ -55,6 +56,7 @@ class Proxy
     /**
      * @param  string $name
      * @return mixed
+     * @throws BadAttributeException
      */
     public function __get($name)
     {
@@ -62,8 +64,9 @@ class Proxy
     }
 
     /**
-     * @param string $name
-     * @param mixed  $value
+     * @param  string $name
+     * @param  mixed  $value
+     * @throws BadAttributeException
      */
     public function __set($name, $value)
     {
