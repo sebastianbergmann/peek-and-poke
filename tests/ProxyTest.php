@@ -81,4 +81,28 @@ class ProxyTest extends \PHPUnit_Framework_TestCase
         $proxy = new Proxy(new Foo);
         $this->assertEquals('value', $proxy->privateAttribute);
     }
+
+    public function testPublicAttributeCanBeWritten()
+    {
+        $proxy = new Proxy(new Foo);
+        $proxy->publicAttribute = 'new value';
+
+        $this->assertEquals('new value', $proxy->publicAttribute);
+    }
+
+    public function testProtectedAttributeCanBeWritten()
+    {
+        $proxy = new Proxy(new Foo);
+        $proxy->protectedAttribute = 'new value';
+
+        $this->assertEquals('new value', $proxy->protectedAttribute);
+    }
+
+    public function testPrivateAttributeCanBeWritten()
+    {
+        $proxy = new Proxy(new Foo);
+        $proxy->privateAttribute = 'new value';
+
+        $this->assertEquals('new value', $proxy->privateAttribute);
+    }
 }

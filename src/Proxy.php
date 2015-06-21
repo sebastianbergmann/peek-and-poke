@@ -58,6 +58,35 @@ class Proxy
      */
     public function __get($name)
     {
+        return $this->attribute($name)->getValue($this->object);
+    }
+
+    /**
+     * @param string $name
+     * @param mixed  $value
+     */
+    public function __set($name, $value)
+    {
+        $this->attribute($name)->setValue($this->object, $value);
+    }
+
+    /**
+     * @param  object $object
+     * @throws InvalidArgumentException
+     */
+    private function ensureArgumentIsObject($object)
+    {
+        if (!is_object($object)) {
+            throw new InvalidArgumentException('Argument must be an object');
+        }
+    }
+
+    /**
+     * @param  string $name
+     * @return \ReflectionProperty
+     */
+    private function attribute($name)
+    {
         try {
             $attribute = new \ReflectionProperty($this->object, $name);
         } catch (\ReflectionException $e) {
@@ -72,17 +101,6 @@ class Proxy
 
         $attribute->setAccessible(true);
 
-        return $attribute->getValue($this->object);
-    }
-
-    /**
-     * @param  object $object
-     * @throws InvalidArgumentException
-     */
-    private function ensureArgumentIsObject($object)
-    {
-        if (!is_object($object)) {
-            throw new InvalidArgumentException('Argument must be an object');
-        }
+        return $attribute;
     }
 }
