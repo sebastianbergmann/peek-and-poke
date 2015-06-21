@@ -53,6 +53,29 @@ class Proxy
     }
 
     /**
+     * @param  string $name
+     * @return mixed
+     */
+    public function __get($name)
+    {
+        try {
+            $attribute = new \ReflectionProperty($this->object, $name);
+        } catch (\ReflectionException $e) {
+            throw new BadAttributeException(
+                sprintf(
+                    'Undefined attribute: %s::$%s',
+                    get_class($this->object),
+                    $name
+                )
+            );
+        }
+
+        $attribute->setAccessible(true);
+
+        return $attribute->getValue($this->object);
+    }
+
+    /**
      * @param  object $object
      * @throws InvalidArgumentException
      */

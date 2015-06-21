@@ -37,6 +37,15 @@ class ProxyTest extends \PHPUnit_Framework_TestCase
         $proxy->nonExistantMethod();
     }
 
+    /**
+     * @expectedException \SebastianBergmann\PeekAndPoke\BadAttributeException
+     */
+    public function testExceptionIsRaisedWhenAccessedAttributeDoesNotExist()
+    {
+        $proxy = new Proxy(new \StdClass);
+        $proxy->nonExistantAttribute;
+    }
+
     public function testPublicMethodCanBeInvoked()
     {
         $proxy = new Proxy(new Foo);
@@ -53,5 +62,23 @@ class ProxyTest extends \PHPUnit_Framework_TestCase
     {
         $proxy = new Proxy(new Foo);
         $this->assertEquals('result', $proxy->privateMethod());
+    }
+
+    public function testPublicAttributeCanBeRead()
+    {
+        $proxy = new Proxy(new Foo);
+        $this->assertEquals('value', $proxy->publicAttribute);
+    }
+
+    public function testProtectedAttributeCanBeRead()
+    {
+        $proxy = new Proxy(new Foo);
+        $this->assertEquals('value', $proxy->protectedAttribute);
+    }
+
+    public function testPrivateAttributeCanBeRead()
+    {
+        $proxy = new Proxy(new Foo);
+        $this->assertEquals('value', $proxy->privateAttribute);
     }
 }
