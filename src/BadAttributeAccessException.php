@@ -10,6 +10,6 @@
 
 namespace SebastianBergmann\PeekAndPoke;
 
-class BadAttributeException extends \RuntimeException implements Exception
+class BadAttributeAccessException extends \RuntimeException implements Exception
 {
 }

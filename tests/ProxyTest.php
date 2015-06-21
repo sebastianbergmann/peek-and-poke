@@ -38,7 +38,7 @@ class ProxyTest extends \PHPUnit_Framework_TestCase
     }
 
     /**
-     * @expectedException \SebastianBergmann\PeekAndPoke\BadAttributeException
+     * @expectedException \SebastianBergmann\PeekAndPoke\BadAttributeAccessException
      */
     public function testExceptionIsRaisedWhenAccessedAttributeDoesNotExist()
     {

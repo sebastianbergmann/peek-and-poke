@@ -56,7 +56,7 @@ class Proxy
     /**
      * @param  string $name
      * @return mixed
-     * @throws BadAttributeException
+     * @throws BadAttributeAccessException
      */
     public function __get($name)
     {
@@ -66,7 +66,7 @@ class Proxy
     /**
      * @param  string $name
      * @param  mixed  $value
-     * @throws BadAttributeException
+     * @throws BadAttributeAccessException
      */
     public function __set($name, $value)
     {
@@ -93,7 +93,7 @@ class Proxy
         try {
             $attribute = new \ReflectionProperty($this->object, $name);
         } catch (\ReflectionException $e) {
-            throw new BadAttributeException(
+            throw new BadAttributeAccessException(
                 sprintf(
                     'Undefined attribute: %s::$%s',
                     get_class($this->object),
