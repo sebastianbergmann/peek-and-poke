@@ -29,6 +29,30 @@ class Proxy
     }
 
     /**
+     * @param  string $name
+     * @param  array  $arguments
+     * @return mixed
+     */
+    public function __call($name, array $arguments)
+    {
+        try {
+            $method = new \ReflectionMethod($this->object, $name);
+        } catch (\ReflectionException $e) {
+            throw new BadMethodCallException(
+                sprintf(
+                    'Call to undefined method %s::%s()',
+                    get_class($this->object),
+                    $name
+                )
+            );
+        }
+
+        $method->setAccessible(true);
+
+        return $method->invokeArgs($this->object, $arguments);
+    }
+
+    /**
      * @param  object $object
      * @throws InvalidArgumentException
      */

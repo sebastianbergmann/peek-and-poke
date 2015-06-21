@@ -27,4 +27,31 @@ class ProxyTest extends \PHPUnit_Framework_TestCase
     {
         new Proxy(null);
     }
+
+    /**
+     * @expectedException \SebastianBergmann\PeekAndPoke\BadMethodCallException
+     */
+    public function testExceptionIsRaisedWhenInvokedMethodDoesNotExist()
+    {
+        $proxy = new Proxy(new \StdClass);
+        $proxy->nonExistantMethod();
+    }
+
+    public function testPublicMethodCanBeInvoked()
+    {
+        $proxy = new Proxy(new Foo);
+        $this->assertEquals('result', $proxy->publicMethod());
+    }
+
+    public function testProtectedMethodCanBeInvoked()
+    {
+        $proxy = new Proxy(new Foo);
+        $this->assertEquals('result', $proxy->protectedMethod());
+    }
+
+    public function testPrivateMethodCanBeInvoked()
+    {
+        $proxy = new Proxy(new Foo);
+        $this->assertEquals('result', $proxy->privateMethod());
+    }
 }
