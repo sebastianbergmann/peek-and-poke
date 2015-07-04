@@ -16,3 +16,28 @@ To add Peek and Poke Proxy as a local, per-project dependency to your project, s
 }
 ```
 
+## Usage
+
+```php
+class Foo
+{
+    private $bar = 'baz';
+
+    private function notPublic()
+    {
+        print __METHOD__ . PHP_EOL;
+    }
+}
+
+$foo   = new Foo;
+$proxy = new SebastianBergmann\PeekAndPoke\Proxy($foo);
+
+print $foo->bar . PHP_EOL;
+$foo->notPublic();
+```
+
+```
+baz
+Foo::notPublic
+```
+
