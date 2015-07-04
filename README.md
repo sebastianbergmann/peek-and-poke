@@ -12,3 +12,21 @@ To add Peek and Poke Proxy as a local, per-project dependency to your project, s
         }
     }
 
+## Usage
+
+```php
+
+namespace Acme\Test\Foo;
+use SebastianBergmann\PeekAndPoke\Proxy;
+use Acme\Foo\Bar;
+
+class BarTest extends \PHPUnit_Framework_TestCase
+{
+    public function testSomeProtectedMethod()
+    {
+        $targetObject = new Bar();
+        $proxy = new Proxy($targetObject);
+        $this->assertEquals('result', $proxy->protectedMethod());
+    }
+}
+```
