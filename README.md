@@ -1,4 +1,4 @@
-[![Build Status](https://travis-ci.org/sebastianbergmann/peek-and-poke.svg?branch=master)](https://travis-ci.org/sebastianbergmann/peek-and-poke)
+[![Build Status](https://img.shields.io/travis/sebastianbergmann/peek-and-poke/master.svg?style=flat-square)](https://travis-ci.org/sebastianbergmann/peek-and-poke)
 
 # Peek and Poke Proxy
 
