@@ -32,8 +32,8 @@ class Foo
 $foo   = new Foo;
 $proxy = new SebastianBergmann\PeekAndPoke\Proxy($foo);
 
-print $foo->bar . PHP_EOL;
-$foo->notPublic();
+print $proxy->bar . PHP_EOL;
+$proxy->notPublic();
 ```
 
 ```
