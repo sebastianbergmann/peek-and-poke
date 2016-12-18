@@ -17,7 +17,7 @@ class ProxyTest extends \PHPUnit_Framework_TestCase
 {
     public function testCanBeCreatedForValidArgument()
     {
-        $this->assertInstanceOf(Proxy::class, new Proxy(new \StdClass));
+        $this->assertInstanceOf('\SebastianBergmann\PeekAndPoke\Proxy', new Proxy(new \StdClass));
     }
 
     /**
